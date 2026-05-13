@@ -1,76 +1,32 @@
-import java.util.Scanner;
+# Diagonal Difference - Algorithm Project
 
-public class Main {
+## Project Overview
+This project is a technical implementation designed to calculate the absolute difference between the sums of a square matrix's two primary diagonals. The project explores two fundamental programming paradigms: **Iteration** and **Recursion**, providing a detailed comparison of their performance and memory usage.
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+## Features
+* **Iterative Solution:** Uses a high-performance single-loop approach with constant memory usage.
+* **Recursive Solution:** Demonstrates a functional approach using the system call stack.
+* **Constraint Safety:** Built-in validation to enforce the `-100 < value < 100` requirement, ensuring data integrity.
+* **Complexity Analysis:** Detailed documentation on Time and Space complexity for both methods.
 
-        System.out.print("Enter the size of the square matrix (n): ");
-        if (!scanner.hasNextInt()) {
-            System.out.println("Invalid input. Please enter an integer.");
-            return;
-        }
-        int n = scanner.nextInt();
-        int[][] matrix = new int[n][n];
+---
+## 📊 Algorithmic Comparison
 
-        System.out.println("Enter the matrix elements row by row:");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                int value = scanner.nextInt();
+| Metric | Iterative Approach | Recursive Approach |
+| :--- | :--- | :--- |
+| **Time Complexity** | O(N) | O(N) |
+| **Space Complexity** | **O(1)** (Constant) | **O(N)** (Linear) |
+| **Memory Tool** | Reusable Variables | System Call Stack |
+| **Stability** | Highly Stable | Risk of StackOverflow |
 
-                if (value <= -100 || value >= 100) {
-                    System.out.println("Error: Value " + value + " is out of bounds (-100 < value < 100).");
-                    return;
-                }
-                matrix[i][j] = value;
-            }
-        }
+### Key Insight
+While both algorithms complete the task in the same amount of time, the **Iterative** method is the professional standard for this problem because it does not consume additional memory as the matrix size increases.
 
-        int iterativeResult = calculateDifferenceIterative(matrix, n);
-        System.out.println("\n--- Results ---");
-        System.out.println("Iterative Algorithm Result: " + iterativeResult);
+---
 
-        int recursiveResult = startRecursive(matrix, n);
-        System.out.println("Recursive Algorithm Result: " + recursiveResult);
-
-        scanner.close();
-    }
-
-    public static int calculateDifferenceIterative(int[][] matrix, int n) {
-        int sumPrimary = 0;
-        int sumSecondary = 0;
-
-        for (int i = 0; i < n; i++) {
-            sumPrimary = sumPrimary + matrix[i][i];
-            sumSecondary = sumSecondary + matrix[i][n - 1 - i];
-        }
-
-        int difference = sumPrimary - sumSecondary;
-
-        if (difference < 0) {
-            difference = difference * -1;
-        }
-
-        return difference;
-    }
-
-    public static int startRecursive(int[][] matrix, int n) {
-        return calculateDifferenceRecursive(matrix, n, 0, 0, 0);
-    }
-
-    private static int calculateDifferenceRecursive(int[][] matrix, int n, int currentRow, int sumPrimary,
-            int sumSecondary) {
-        if (currentRow == n) {
-            int difference = sumPrimary - sumSecondary;
-            if (difference < 0) {
-                difference = difference * -1;
-            }
-            return difference;
-        }
-
-        int currentPrimary = sumPrimary + matrix[currentRow][currentRow];
-        int currentSecondary = sumSecondary + matrix[currentRow][n - 1 - currentRow];
-
-        return calculateDifferenceRecursive(matrix, n, currentRow + 1, currentPrimary, currentSecondary);
-    }
-}
+## 🛠 Sample Input/Output
+**Input:**
+```text
+3
+11 2 4
+4 5 6
