@@ -4,7 +4,7 @@
 This project is a implementation designed to calculate the absolute difference between the sums of a square matrix's two primary diagonals. The project explores two programming : **Iteration** and **Recursion**, providing a detailed comparison of their performance and memory usage.
 
 ---
-## 📊 Algorithmic Comparison
+## Algorithmic Comparison
 
 | Metric | Iterative Approach | Recursive Approach |
 | :--- | :--- | :--- |
@@ -13,7 +13,7 @@ This project is a implementation designed to calculate the absolute difference b
 | **Memory Tool** | Reusable Variables | System Call Stack |
 | **Stability** | Highly Stable | Risk of StackOverflow |
 
-## 🛠 Sample Input/Output
+## Sample Input/Output
 
 **Input:**
 ```text
